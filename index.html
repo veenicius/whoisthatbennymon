@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Who is That Bennymon?</title>
+
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div class="uk-container">
+      <div uk-grid>
+        <div class="uk-width-1-1">
+          <h1 class="uk-heading-divider">
+            <span>Who is That Bennymon?</span>
+          </h1>
+        </div>
+        <div class="uk-width-expand@m">
+          <img
+            id="pokePhoto"
+            class="uk-width-expand@m uk-height-1-1 hidden"
+            data-src="https://flevix.com/wp-content/uploads/2019/07/Ring-Preloader.gif"
+            uk-img
+          />
+        </div>
+        <div class="uk-width-expand@m ">
+          <button
+            id="pokeButtons"
+            class="uk-button uk-button-primary uk-width-expand@m uk-height-small"
+            onclick="checkChoice(this.innerHTML)"
+          >
+            Button
+          </button>
+        </div>
+        <div class="uk-width-expand@m">
+          <button
+            id="pokeButtons"
+            class="uk-button uk-button-primary uk-width-expand@m uk-height-small"
+            onclick="checkChoice(this.innerHTML)"
+          >
+            Button
+          </button>
+        </div>
+        <div class="uk-width-expand@m">
+          <button
+            id="pokeButtons"
+            class="uk-button uk-button-primary uk-width-expand@m uk-height-small"
+            onclick="checkChoice(this.innerHTML)"
+          >
+            Button
+          </button>
+        </div>
+        <div class="uk-width-expand@m">
+          <button
+            id="pokeButtons"
+            class="uk-button uk-button-primary uk-width-expand@m uk-height-small"
+            onclick="checkChoice(this.innerHTML)"
+          >
+            Button
+          </button>
+        </div>
+        <progress
+          id="timer"
+          class="uk-progress"
+          value="100"
+          max="100"
+        ></progress>
+        <h2 id="acertos"></h2>
+        <h2 id="erros"></h2>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script>
+      window.onload = getPokemonList();
+    </script>
+  </body>
+</html>
