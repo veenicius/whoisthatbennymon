@@ -27,6 +27,14 @@ function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
 
+function wait(ms) {
+  var start = new Date().getTime();
+  var end = start;
+  while (end < start + ms) {
+    end = new Date().getTime();
+  }
+}
+
 async function getPokemonList() {
   var pokemons = await axios.get(`https://pokeapi.co/api/v2/pokemon/`, {
     params: { limit: 964 }
@@ -57,7 +65,12 @@ async function renderPokemons(pokes) {
   shuffle(pokes);
   rightPoke = pokes[Math.floor(Math.random() * pokes.length)];
   let rightName = rightPoke.name;
+
   let rightPhoto = await axios.get(rightPoke.url).then(function(response) {
+    pokeImageSelector.setAttribute(
+      "class",
+      "uk-width-expand@m uk-height-1-1 hidden"
+    );
     pokeImageSelector.setAttribute("src", response.data.sprites.front_default);
   });
 
@@ -68,10 +81,13 @@ async function renderPokemons(pokes) {
 
 function checkChoice(value) {
   if (value == rightPoke.name) {
-    score++;
-    rightSelector.innerHTML = "Acertos: " + score;
-    getPokemonList();
-    bar.value = bar.max;
+    pokeImageSelector.setAttribute("class", "uk-width-expand@m uk-height-1-1");
+    setTimeout(function() {
+      score++;
+      rightSelector.innerHTML = "Acertos: " + score;
+      getPokemonList();
+      bar.value = bar.max;
+    }, 2000);
   } else {
     wrong++;
     wrongSelector.innerHTML = "Erros: " + wrong;
